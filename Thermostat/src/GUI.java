@@ -5,22 +5,27 @@ import java.text.DecimalFormat;
 import javax.swing.*;
 public class GUI implements ActionListener {
 
-
+    JFrame frame=new JFrame("Fahrenheit Converter");
     JRadioButton K=new JRadioButton("Kelvin");
  //   JRadioButton F=new JRadioButton("Fahrenheit");
     JRadioButton C=new JRadioButton("Celsius");
     JTextField Value = new JTextField();
 
 
+
+
     GUI() {
 
-    JFrame frame=new JFrame();
-    JLabel Title = new JLabel("Fahrenheit Converto ");
+
+
+
+
+    JLabel Title = new JLabel("Fahrenheit ");
     JLabel EnterValue = new JLabel();
 
 
 
-    Title.setBounds(85,-20,100,100);
+    Title.setBounds(10,10,100,100);
     Value.setBounds(90,50,100,20);
     K.setBounds(-5,100,100,30);
    // F.setBounds(-5,140,100,30);
@@ -50,14 +55,27 @@ public class GUI implements ActionListener {
 
         String Convert = Value.getText();
         double Sum = Double.parseDouble(Convert);
+        DecimalFormat d = new DecimalFormat("#.####");
 
 
         if(e.getSource()== K){
 
 
+
+
           double Kelvin = (Sum -32) * 5/9 +273.15;
 
+
+
+
+
+            JTextField Answer = new JTextField(df.format(Kelvin) + "K");
+            Answer.setBounds(90,80,100,20);
+            Answer.setEditable(false);
+            frame.add(Answer);
+
             System.out.println(df.format(Kelvin) + "K");
+
 
 
         }
@@ -65,6 +83,16 @@ public class GUI implements ActionListener {
         if(e.getSource() == C){
 
             double Celcius = (Sum - 32) * 5/9;
+            JTextField Answer = new JTextField(df.format(Celcius) + "C");
+            Answer.setBounds(90,80,100,20);
+            Answer.setEditable(false);
+            frame.add(Answer);
+
+
+
+
+
+
 
             System.out.println(df.format(Celcius) + "C");
 
